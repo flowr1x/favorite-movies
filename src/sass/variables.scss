@@ -1,0 +1,11 @@
+:root {
+  --primary: rgb(35, 97, 133);
+  --dark: #333;
+  --white: #eee;
+  --content-bg-clr: #e0e0e0;
+  --content-border-radius: 5px;
+
+  --btn-border-clr: var(--primary);
+  --btn-border-width: 1px;
+  --btn-border-radius: var(--content-border-radius);
+}
