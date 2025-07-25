@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MoviesList from '@/components/MoviesList.vue'
 import BaseButton from '@/components/UI/BaseButton.vue'
 import { useMovieStore } from '@/stores'
 
@@ -10,6 +11,7 @@ const movieStore = useMovieStore()
     <BaseButton>Watched</BaseButton>
     <BaseButton>Search</BaseButton>
   </div>
+  <MoviesList />
 </template>
 
 <style scoped lang="scss">
@@ -18,5 +20,6 @@ const movieStore = useMovieStore()
   gap: 16px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 48px;
 }
 </style>
