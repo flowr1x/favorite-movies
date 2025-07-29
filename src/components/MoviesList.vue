@@ -7,7 +7,7 @@ const movieStore = useMovieStore()
 
 <template>
   <ol class="movies-list">
-    <li class="movies-item" v-for="i in 5">
+    <li class="movies-item" v-for="i in 5" :key="i">
       <div class="movies-item__content">
         <div class="movies-item__poster">
           <img
@@ -48,6 +48,7 @@ const movieStore = useMovieStore()
   gap: 24px;
   padding: 16px;
   background-color: var(--content-bg-clr);
+  border-radius: var(--content-border-radius);
 
   &::before {
     content: counter(list-item-counter) '.';

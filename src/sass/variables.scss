@@ -1,11 +1,15 @@
 :root {
   --primary: rgb(35, 97, 133);
   --dark: #333;
-  --white: #eee;
-  --content-bg-clr: #e0e0e0;
+  --white: white;
+  --content-bg-clr: #f1f1f1;
   --content-border-radius: 5px;
+  --content-border-width: 1px;
+
+  --input-border-clr: var(--primary);
+  --input-border-radius: var(--content-border-radius);
 
   --btn-border-clr: var(--primary);
-  --btn-border-width: 1px;
+  --btn-border-width: var(--content-border-width);
   --btn-border-radius: var(--content-border-radius);
 }

@@ -1,7 +1,11 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
+import SearchView from '@/views/SearchView.vue'
+import WatchView from '@/views/WatchView.vue'
 
-const routes = [{ path: '/', component: HomeView }]
+const routes = [
+  { path: '/', component: SearchView },
+  { path: '/watched', component: WatchView },
+]
 
 const router = createRouter({
   history: createMemoryHistory(),
