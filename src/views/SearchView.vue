@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import MoviesList from '@/components/MoviesList.vue'
-import BaseFormWrapper from '@/components/UI/BaseFormWrapper.vue'
-import BaseInput from '@/components/UI/BaseInput.vue'
-import BaseLabel from '@/components/UI/BaseLabel.vue'
+import SearchForm from '@/components/SearchForm.vue'
 import { useMovieStore } from '@/stores'
+import BaseLoader from '@/components/UI/BaseLoader.vue'
 
 const movieStore = useMovieStore()
 </script>
 
 <template>
-  <form action="#" class="form form__search">
-    <BaseFormWrapper>
-      <BaseInput id="text" />
-      <BaseLabel>Search</BaseLabel>
-    </BaseFormWrapper>
-  </form>
-
-  <MoviesList />
+  <h1>Search Movies</h1>
+  <SearchForm />
+  <BaseLoader v-if="movieStore.isLoader" />
+  <MoviesList :movies="movieStore.moviesSearchSort" />
 </template>
 
 <style scoped lang="scss">

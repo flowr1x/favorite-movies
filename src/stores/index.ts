@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Movie } from '@/types/index.ts'
 
 export const useMovieStore = defineStore('movieStore', () => {
-  const state = ref(2)
+  const baseURL = 'https://image.tmdb.org/t/p/w500'
+  const search = ref('')
+  const isLoader = ref(false)
   const movies = ref<Movie[]>([
     {
       adult: false,
@@ -21,6 +23,7 @@ export const useMovieStore = defineStore('movieStore', () => {
       video: false,
       vote_average: 8.091,
       vote_count: 1196,
+      is_watched: true,
     },
     {
       adult: false,
@@ -40,5 +43,19 @@ export const useMovieStore = defineStore('movieStore', () => {
       vote_count: 462,
     },
   ])
-  return { state }
+  const moviesWatched = computed(() => {
+    return movies.value.filter((movie) => movie.is_watched)
+  })
+  const moviesSearchSort = computed(() => {
+    return movies.value.filter((movie) =>
+      movie.title.toLowerCase().includes(search.value.toLowerCase()),
+    )
+  })
+
+  function changeStateWatched(currentMovie: Movie) {
+    const index = movies.value.findIndex((movie) => movie.id === currentMovie.id)
+    movies.value[index].is_watched = !movies.value[index].is_watched
+  }
+
+  return { movies, baseURL, moviesWatched, changeStateWatched, search, moviesSearchSort, isLoader }
 })

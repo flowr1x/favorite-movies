@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineModel } from 'vue'
 
-interface InputSearch {
-  modelValue: string
+interface Props {
+  id?: string
+  placeholder?: string
+  type?: string // Например, 'text', 'password'
 }
-
-const props = defineProps<InputSearch>()
-const emits = defineEmits(['update:modelValue'])
+const props = defineProps<Props>()
+const modelValue = defineModel<string>()
 </script>
 
 <template>
   <input
+    :id="props.id"
     type="text"
     class="form-control"
-    placeholder=""
-    :value="props.modelValue"
-    @input="emits('update:modelValue', ($event.target as HTMLInputElement).value)"
+    :placeholder="props.placeholder"
+    v-model="modelValue"
   />
 </template>
 
