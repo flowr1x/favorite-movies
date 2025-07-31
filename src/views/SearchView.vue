@@ -5,13 +5,14 @@ import { useMovieStore } from '@/stores'
 import BaseLoader from '@/components/UI/BaseLoader.vue'
 
 const movieStore = useMovieStore()
+movieStore.getMovies()
 </script>
 
 <template>
   <h1>Search Movies</h1>
   <SearchForm />
   <BaseLoader v-if="movieStore.isLoader" />
-  <MoviesList :movies="movieStore.moviesSearchSort" />
+  <MoviesList :movies="movieStore.movies" />
 </template>
 
 <style scoped lang="scss">
