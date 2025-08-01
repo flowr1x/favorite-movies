@@ -2,35 +2,48 @@
 import { defineProps } from 'vue'
 import BaseButton from '@/components/UI/BaseButton.vue'
 import { useMovieStore } from '@/stores'
+import { useSearchStore } from '@/stores/searchStore'
 import type { Movie } from '@/types'
 
 interface MovieItemProps {
   movie: Movie
+  isSearch: boolean
 }
 const props = defineProps<MovieItemProps>()
 const { movie } = props
 const movieStore = useMovieStore()
+const searchStore = useSearchStore()
 </script>
 
 <template>
   <li class="movies-item">
     <div class="movies-item__content">
       <div class="movies-item__poster">
-        <img :src="movieStore.baseURL + movie.poster_path" alt="Movie Poster" />
+        <img
+          :src="movieStore.baseURL + movie.poster_path"
+          alt="Movie Poster"
+        />
       </div>
       <div class="movies-item__info">
         <h3 class="movies-item__title">{{ movie.title }}</h3>
-        <div class="movies-item__original-title">
-          {{ movie.original_title }}, {{ movie.release_date }}
-        </div>
+        <div class="movies-item__original-title">{{ movie.original_title }}, {{ movie.release_date }}</div>
         <div class="movies-item__meta">Action, Animation, Drama</div>
         <div class="movies-item__overview">{{ movie.overview }}</div>
       </div>
     </div>
-    <BaseButton v-if="movie.is_watched" @click="movieStore.changeStateWatched(movie)"
-      >Unwatch</BaseButton
+    <BaseButton
+      v-if="isSearch"
+      @click="searchStore.addMovie(movie)"
     >
-    <BaseButton v-else @click="movieStore.changeStateWatched(movie)">Watch</BaseButton>
+      Add
+    </BaseButton>
+    <div v-else>
+      <BaseButton @click="movieStore.changeStateWatched(movie)">
+        <span v-if="movie.is_watched">Unwatch</span>
+        <span v-else>Watch</span>
+      </BaseButton>
+      <BaseButton @click="movieStore.removeMovie(movie)">Remove</BaseButton>
+    </div>
   </li>
 </template>
 

@@ -5,13 +5,19 @@ import MovieItem from './MovieItem.vue'
 
 interface MoviesListProps {
   movies: Movie[]
+  isSearch?: boolean
 }
 const props = defineProps<MoviesListProps>()
 </script>
 
 <template>
   <ol class="movies-list">
-    <MovieItem v-for="movie in props.movies" :key="movie.id" :movie />
+    <MovieItem
+      v-for="movie in props.movies"
+      :key="movie.id"
+      :movie
+      :isSearch
+    />
   </ol>
 </template>
 

@@ -8,9 +8,29 @@ const { moviesWatched } = storeToRefs(movieStore)
 </script>
 
 <template>
-  <h1>List Watched Movies</h1>
-  <div v-if="!moviesWatched.length">List Empty</div>
+  <h1>List Movies</h1>
+  <h2>List Movies Watched</h2>
+  <div
+    v-if="!moviesWatched.length"
+    class="empty"
+  >
+    List Empty
+  </div>
   <MoviesList :movies="moviesWatched" />
+  <h2>List Movies Unwatched</h2>
+  <MoviesList :movies="movieStore.movies" />
+  <div
+    v-if="!movieStore.movies.length"
+    class="empty"
+  >
+    List Empty
+  </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.empty {
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 600;
+}
+</style>
