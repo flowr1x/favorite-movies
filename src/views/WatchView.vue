@@ -17,7 +17,7 @@ const { moviesWatched } = storeToRefs(movieStore)
     List Empty
   </div>
   <MoviesList :movies="moviesWatched" />
-  <h2>List Movies Unwatched</h2>
+  <h2>All List Movies</h2>
   <MoviesList :movies="movieStore.movies" />
   <div
     v-if="!movieStore.movies.length"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, withDefaults } from 'vue'
 import type { Movie } from '@/types'
 import MovieItem from './MovieItem.vue'
 
@@ -7,7 +7,9 @@ interface MoviesListProps {
   movies: Movie[]
   isSearch?: boolean
 }
-const props = defineProps<MoviesListProps>()
+const props = withDefaults(defineProps<MoviesListProps>(), {
+  isSearch: false,
+})
 </script>
 
 <template>

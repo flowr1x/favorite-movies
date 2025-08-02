@@ -1,6 +1,12 @@
-# .
+# Favorite Movies
 
-This template should help get you started developing with Vue 3 in Vite.
+To use the API key, you need to create a .env file in the root directory of your project. Inside this file, add the following line:
+
+```
+VITE_API_KEY_TMDB=your_api_key_value
+```
+
+Replace your_api_key_value with your actual API key, which you can obtain from [The Movie Database website](https://developer.themoviedb.org/docs/getting-started).
 
 ## Recommended IDE Setup
 

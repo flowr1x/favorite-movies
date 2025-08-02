@@ -10,7 +10,7 @@ const movieStore = useSearchStore()
 <template>
   <h1>Search Movies</h1>
   <SearchForm />
-  <!-- <BaseLoader v-if="movieStore.isLoader" /> -->
+  <BaseLoader v-if="movieStore.isLoader" />
   <MoviesList
     :movies="movieStore.movies"
     :isSearch="true"

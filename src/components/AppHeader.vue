@@ -1,22 +1,50 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import BaseButton from './UI/BaseButton.vue'
 </script>
 <template>
   <header class="header">
     <div class="header__container">
       <div class="header__top">
         <div class="header__logo">
-          <img src="../assets/logo.svg" alt="Logo" />
+          <img
+            src="../assets/logo.svg"
+            alt="Logo"
+          />
         </div>
         <div class="header__text">FavoriteMovies</div>
       </div>
       <nav class="nav">
         <ul class="nav-list">
           <li>
-            <RouterLink to="/" class="btn">Search</RouterLink>
+            <router-link
+              to="/"
+              class="btn"
+              custom
+              v-slot="{ navigate, isActive }"
+            >
+              <BaseButton
+                :class="{ 'router-link-active': isActive }"
+                @click="navigate"
+              >
+                Search
+              </BaseButton>
+            </router-link>
           </li>
           <li>
-            <RouterLink to="/watched" class="btn">Watched</RouterLink>
+            <router-link
+              to="/watched"
+              class="btn"
+              custom
+              v-slot="{ navigate, isActive }"
+            >
+              <BaseButton
+                :class="{ 'router-link-active': isActive }"
+                @click="navigate"
+              >
+                Watched
+              </BaseButton>
+            </router-link>
           </li>
         </ul>
       </nav>

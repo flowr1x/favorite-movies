@@ -34,10 +34,14 @@ const searchStore = useSearchStore()
     <BaseButton
       v-if="isSearch"
       @click="searchStore.addMovie(movie)"
+      class="movies-item__btn"
     >
       Add
     </BaseButton>
-    <div v-else>
+    <div
+      v-else
+      class="movies-item__buttons movies-item__btn"
+    >
       <BaseButton @click="movieStore.changeStateWatched(movie)">
         <span v-if="movie.is_watched">Unwatch</span>
         <span v-else>Watch</span>
@@ -97,6 +101,14 @@ const searchStore = useSearchStore()
     text-overflow: ellipsis;
     max-width: 100%;
     line-height: 1.5em;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__btn {
+    margin-left: auto;
   }
 }
 </style>
